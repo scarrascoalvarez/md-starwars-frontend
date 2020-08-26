@@ -38,11 +38,11 @@ export const animations = [
             'right': '0px'
         })),
         state('out', style({
-            'right': '-425px'
+            'right': '-435px'
         })),
         transition('in => out', [group([
             animate('300ms ease-in-out', style({
-                'right': '-425px'
+                'right': '-435px'
             }))
         ]
         )]),
