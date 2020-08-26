@@ -19,6 +19,14 @@ const routes: Routes = [
       {
         path: 'starship/detail',
         loadChildren: () => import('./views/starship-detail/starship-detail.module').then(m => m.StarshipDetailModule),
+      },
+      {
+        path: 'information',
+        loadChildren: () => import('./views/information/information.module').then(m => m.InformationModule),
+      },
+      {
+        path: 'admin',
+        loadChildren: () => import('./views/admin/admin.module').then(m => m.AdminModule),
       }
     ]
   },
