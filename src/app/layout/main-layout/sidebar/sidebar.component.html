@@ -1,0 +1,5 @@
+<div class="sidebar" [@slideInOutSidebar]="mainLayoutService.showSidebar$ | async">
+    <div class="sidebar__actions">
+        <div (click)="mainLayoutService.showHideSidebar()" class="sidebar__actions__cancel"></div>
+    </div>
+</div>

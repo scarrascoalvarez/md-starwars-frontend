@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainLayoutService } from '../main-layout.service';
 
 @Component({
   selector: 'app-top-nav-bar',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopNavBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public mainLayoutService: MainLayoutService
+  ) { }
 
   ngOnInit(): void {
   }

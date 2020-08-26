@@ -1,0 +1,28 @@
+@import "./../../../../styles/colors.scss";
+@import "./../../../../styles/variables.scss";
+
+.sidebar {
+    padding: 20px;
+    z-index: 10;
+    width: 425px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0px;
+    background-color: $white;
+    @include border-shadow();
+    &__actions {
+        display: flex;
+        justify-content: flex-end;
+        &__cancel {
+            cursor: pointer;
+            height: 40px;
+            width: 40px;
+            background-image: url("/assets/icons/cancel.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+        }
+    }
+}
