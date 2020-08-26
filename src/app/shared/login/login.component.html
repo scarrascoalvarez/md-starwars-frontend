@@ -1,0 +1,35 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="row">
+        <div class="col text-center">
+            <h4>Iniciar Sesión</h4>
+            <p>Introduzca su correo y contraseña para acceder</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 mt-4">
+            <mat-form-field appearance="legacy" class="w-100">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email">
+                <mat-error>Debe rellenar este campo</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-12 mt-2">
+            <mat-form-field appearance="legacy" class="w-100">
+                <mat-label>Contraseña</mat-label>
+                <input type="password" matInput formControlName="password">
+                <mat-error>Debe rellenar este campo</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 mt-4 mb-4">
+            <button class="btn__primary w-100" type="submit">Iniciar sesión</button>
+        </div>
+        <div class="col-12 mt-4 text-center">
+            <p>¿No tienes cuenta?</p>
+        </div>
+        <div class="col-12 mt-2">
+            <button class="btn__secondary w-100">Crear cuenta</button>
+        </div>
+    </div>
+</form>
