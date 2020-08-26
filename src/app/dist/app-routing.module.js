@@ -13,7 +13,7 @@ var main_layout_component_1 = require("src/app/layout/main-layout/main-layout.co
 var routes = [
     {
         path: '',
-        redirectTo: '/starhips',
+        redirectTo: '/starships',
         pathMatch: 'full'
     },
     {
@@ -21,18 +21,18 @@ var routes = [
         component: main_layout_component_1.MainLayoutComponent,
         children: [
             {
-                path: 'starhips',
+                path: 'starships',
                 loadChildren: function () { return Promise.resolve().then(function () { return require('./views/starships-list/starships-list.module'); }).then(function (m) { return m.StarshipsListModule; }); }
             },
             {
-                path: 'starhip/detail',
+                path: 'starship/detail',
                 loadChildren: function () { return Promise.resolve().then(function () { return require('./views/starship-detail/starship-detail.module'); }).then(function (m) { return m.StarshipDetailModule; }); }
             }
         ]
     },
     {
         path: '**',
-        redirectTo: '/error/404'
+        redirectTo: ''
     }
 ];
 var AppRoutingModule = /** @class */ (function () {

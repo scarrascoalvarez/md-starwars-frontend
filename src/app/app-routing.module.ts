@@ -5,7 +5,7 @@ import {MainLayoutComponent} from 'src/app/layout/main-layout/main-layout.compon
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/starhips',
+    redirectTo: '/starships',
     pathMatch: 'full'
   },
   {
@@ -13,18 +13,18 @@ const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       {
-        path: 'starhips',
+        path: 'starships',
         loadChildren: () => import('./views/starships-list/starships-list.module').then(m => m.StarshipsListModule),
       },
       {
-        path: 'starhip/detail',
+        path: 'starship/detail',
         loadChildren: () => import('./views/starship-detail/starship-detail.module').then(m => m.StarshipDetailModule),
       }
     ]
   },
   {
     path: '**',
-    redirectTo: '/error/404'
+    redirectTo: ''
   }
 ];
 
