@@ -5,6 +5,7 @@ import { StarshipsDataService } from 'src/app/services/starships-data/starships-
 import { takeUntil } from 'rxjs/internal/operators/takeUntil';
 import { HttpHeaders } from '@angular/common/http';
 import { PaginatedStarships, Starship } from 'src/app/core/models/startship.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -53,7 +54,12 @@ export class StarshipsListService implements OnDestroy {
       .pipe(
         takeUntil(this.destroy$)
       ).subscribe((starships: PaginatedStarships) => {
+        starships.results.forEach((starship: Starship) => {
+          starship.image = `${environment.API_IMAGE_URL}${starship.url.split('/')[starship.url.split('/').length - 2]}.jpg`
+        });
         this.starships.next(starships.results);
+        console.log(starships.results);
+        
       })
   }
 
@@ -67,6 +73,9 @@ export class StarshipsListService implements OnDestroy {
         .pipe(
           takeUntil(this.destroy$)
         ).subscribe((starships: PaginatedStarships) => {
+          starships.results.forEach((starship: Starship) => {
+            starship.image = `${environment.API_IMAGE_URL}${starship.url.split('/')[starship.url.split('/').length - 2]}.jpg`
+          });
           const totalStarships = [...this.starships.getValue(), ...starships.results];
           this.starships.next(totalStarships);
           if (starships.count === this.starships.getValue().length) {

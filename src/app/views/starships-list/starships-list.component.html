@@ -7,10 +7,10 @@
         <h1>STARSHIPS COLLECTION 2020</h1>
     </div>
 </div>
-<div infiniteScroll [infiniteScrollDistance]="10" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
-    <div class="row">
-        <div class="col-md-6 mb-4" *ngFor="let starship of starshipsListService.starship$ | async">
-            {{starship|json}}
+<div class="container-fluid">
+    <div class="row" infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+        <div class="col-md-6" *ngFor="let starship of starshipsListService.starship$ | async">
+            <app-starship-card [starship]="starship"></app-starship-card>
         </div>
     </div>
 </div>

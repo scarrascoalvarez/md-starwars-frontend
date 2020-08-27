@@ -1,0 +1,8 @@
+<div class="starship-card">
+    <div #cardImage class="starship-card__image" [ngStyle]="{'background-image':  'url(' + starship.image + ')'}"></div>
+    <img style="display: none;" [src]="starship.image" (error)="showNotFoundImage(cardImage)" />
+    <div class="starship-card__content">
+        <h3 class="mb-0 mt-2">{{starship.name | titlecase}}</h3>
+        <p>{{starship.starship_class | titlecase}}</p>
+    </div>
+</div>
