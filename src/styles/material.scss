@@ -155,3 +155,10 @@ $md-starwars-frontend-theme: mat-light-theme((
   color: $black;
   line-height: 1.325 !important;
 }
+
+// Dialog
+
+.mat-dialog-container {
+  border-radius: 0 !important;
+  max-height: 90vh !important;
+}

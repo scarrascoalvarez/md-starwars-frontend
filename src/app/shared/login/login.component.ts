@@ -1,8 +1,11 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {LoginService} from './login.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { RegisterComponent } from '../register/register.component';
+import { takeUntil } from 'rxjs/internal/operators/takeUntil';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +14,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [LoginService]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
   /**
    * Use to destroy and prevent memory leaks
@@ -26,10 +29,16 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
     this.buildLoginForm();
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   login(): void {
@@ -43,6 +52,19 @@ export class LoginComponent implements OnInit {
       email: [null, Validators.required],
       password: [null, Validators.required]
     });;
+  }
+
+  openRegister(): void {
+    const dialogRef = this.dialog.open(RegisterComponent, {
+      width: '750px',
+    });
+    dialogRef.afterClosed()
+      .pipe(
+        takeUntil(this.destroy$)
+      )
+      .subscribe((response: any) => {
+        console.log('response', response);
+      });
   }
 
 }

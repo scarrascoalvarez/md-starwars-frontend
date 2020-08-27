@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { animations } from 'src/app/core/animations/animations';
 import { MainLayoutService } from 'src/app/layout/main-layout/main-layout.service';
 
