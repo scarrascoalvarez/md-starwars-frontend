@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { StarshipsDataService } from 'src/app/services/starships-data/starships-data.service';
 import { takeUntil } from 'rxjs/internal/operators/takeUntil';
 import { HttpHeaders } from '@angular/common/http';
+import { PaginatedStarships, Starship } from 'src/app/core/models/startship.model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,7 @@ export class StarshipsListService implements OnDestroy {
   /**
    * Total list of starships
    */
-  starships: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(null);
+  starships: BehaviorSubject<Starship[]> = new BehaviorSubject<Starship[]>(null);
   starship$ = this.starships.asObservable();
 
     /**
@@ -51,7 +52,7 @@ export class StarshipsListService implements OnDestroy {
     this.starshipsDataService.getStarships(this.page)
       .pipe(
         takeUntil(this.destroy$)
-      ).subscribe((starships: any) => {
+      ).subscribe((starships: PaginatedStarships) => {
         this.starships.next(starships.results);
       })
   }
@@ -65,7 +66,7 @@ export class StarshipsListService implements OnDestroy {
       this.starshipsDataService.getStarships(this.page)
         .pipe(
           takeUntil(this.destroy$)
-        ).subscribe((starships: any) => {
+        ).subscribe((starships: PaginatedStarships) => {
           const totalStarships = [...this.starships.getValue(), ...starships.results];
           this.starships.next(totalStarships);
           if (starships.count === this.starships.getValue().length) {
