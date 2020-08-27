@@ -2,6 +2,7 @@
 @import "./../../../../styles/variables.scss";
 
 .top-nav-bar {
+    z-index: 9;
     display: flex;
     justify-content: space-between;
     align-items: center;

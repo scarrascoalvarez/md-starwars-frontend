@@ -4,12 +4,14 @@ import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 registerLocaleData(localeEs, 'es');
 import { LayoutModule } from 'src/app/layout/layout.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    LayoutModule
+    LayoutModule,
+    HttpClientModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es' },
