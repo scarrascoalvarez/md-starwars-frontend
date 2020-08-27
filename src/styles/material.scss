@@ -162,3 +162,9 @@ $md-starwars-frontend-theme: mat-light-theme((
   border-radius: 0 !important;
   max-height: 90vh !important;
 }
+
+// Checbox
+.mat-checkbox-inner-container {
+  width: 20px;
+  height: 20px;
+}

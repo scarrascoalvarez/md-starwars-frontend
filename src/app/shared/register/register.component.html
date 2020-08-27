@@ -1,1 +1,57 @@
-<app-dialog-structure [dialogRef]="dialogRef"></app-dialog-structure>
+<app-dialog-structure [dialogRef]="dialogRef">
+    <div class="register-wrapper">
+        <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <div class="row">
+                <div class="col text-center">
+                    <h4>Crear cuenta</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mt-4">
+                    <mat-radio-group formControlName="role">
+                        <mat-radio-button [color]="'primary'" class="mr-4" value="Administrator">Administrador</mat-radio-button>
+                        <mat-radio-button [color]="'primary'" value="Customer">Cliente</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div class="col-6 mt-2">
+                    <mat-form-field appearance="legacy" class="w-100">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput formControlName="name">
+                        <mat-error>Debe rellenar este campo</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-6 mt-2">
+                    <mat-form-field appearance="legacy" class="w-100">
+                        <mat-label>Apellidos</mat-label>
+                        <input matInput formControlName="lastname">
+                        <mat-error>Debe rellenar este campo</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 mt-2">
+                    <mat-form-field appearance="legacy" class="w-100">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email">
+                        <mat-error>Por favor introduzca un email válido</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 mt-2 mb-2">
+                    <mat-form-field appearance="legacy" class="w-100">
+                        <mat-label>Contraseña</mat-label>
+                        <input type="password" matInput formControlName="password">
+                        <mat-error>Por favor introduzca una contraseá de entre 8 y 16 caracteres</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 mt-4 mb-2 d-flex">
+                    <mat-checkbox class="mr-2 mt-1" [color]="'primary'"></mat-checkbox>
+                    <p class="m-0">He podido leer y entiendo la información sobre el uso de mis datos personales
+                        explciadas en la Política de privacidad.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mt-4 mb-4">
+                    <button class="btn__primary w-100" type="submit">Crear Cuenta</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</app-dialog-structure>
