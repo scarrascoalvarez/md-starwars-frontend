@@ -23,9 +23,9 @@ export class StarshipsDataService {
    * Returns an observable with the list of starships and remove the observable from the cache after the stipulated cache expiration time
    * @param page listing page number
    */
-  getStarships(page: number): Observable<PaginatedStarships> {
+  getStarships(page: number, headers?: HttpHeaders): Observable<PaginatedStarships> {
     if (!this.starship$[`page=${page}`]) {
-      this.starship$[`page=${page}`] = this.requestStarships(page).pipe(
+      this.starship$[`page=${page}`] = this.requestStarships(page, headers).pipe(
         shareReplay(environment.CACHE_SIZE)
       );
       setTimeout(() => {
@@ -39,9 +39,9 @@ export class StarshipsDataService {
    * Make the request to obtain starships from the api
    * @param page listing page number
    */
-  requestStarships(page: number): Observable<PaginatedStarships> {
+  requestStarships(page: number, headers?: HttpHeaders): Observable<PaginatedStarships> {
     const url = `${environment.API_STARWARS_URL}/starships/?page=${page}`;
-    return this.httpClient.get<PaginatedStarships>(url);
+    return this.httpClient.get<PaginatedStarships>(url, {headers});
   }
 
   /**

@@ -68,7 +68,7 @@ export class StarshipsListService implements OnDestroy {
       this.isLoading.next(true);
       let headers = new HttpHeaders();
       headers = headers.append('NO_LOADER', 'true');
-      this.starshipsDataService.getStarships(this.page)
+      this.starshipsDataService.getStarships(this.page, headers)
         .pipe(
           takeUntil(this.destroy$)
         ).subscribe((starships: PaginatedStarships) => {

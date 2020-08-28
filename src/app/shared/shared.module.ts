@@ -6,21 +6,28 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { DialogStructureComponent } from './dialog-structure/dialog-structure.component';
 import { RegisterComponent } from './register/register.component';
 import { RegisterConfirmationComponent } from './register-confirmation/register-confirmation.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 @NgModule({
   declarations: [
     LoginComponent,
     DialogStructureComponent,
     RegisterComponent,
-    RegisterConfirmationComponent
+    RegisterConfirmationComponent,
+    SpinnerComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    NgxSpinnerModule
   ],
   exports: [
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    SpinnerComponent
   ],
   entryComponents: [
     RegisterComponent,
