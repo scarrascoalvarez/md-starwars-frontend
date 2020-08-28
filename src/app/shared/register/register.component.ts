@@ -1,10 +1,11 @@
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from 'src/app/core/helpers/custom-validators';
 import { RegisterService } from './register.service';
 import { takeUntil } from 'rxjs/internal/operators/takeUntil';
 import { Subject } from 'rxjs/internal/Subject';
+import { RegisterConfirmationComponent } from '../register-confirmation/register-confirmation.component';
 
 @Component({
   selector: 'app-register',
@@ -34,7 +35,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
     public dialogRef: MatDialogRef<any>,
     private formBuilder: FormBuilder,
     private registerService: RegisterService,
-    private changeDetectorRef: ChangeDetectorRef
+    private changeDetectorRef: ChangeDetectorRef,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -52,7 +54,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$)
       ).subscribe((response: boolean) => {
         if (response) {
-          console.log('registrado');
+          this.dialogRef.close();
+          this.dialog.open(RegisterConfirmationComponent, {
+            width: '750px',
+          });
         } else {
           this.registryError = true;
           this.changeDetectorRef.markForCheck();

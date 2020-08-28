@@ -5,11 +5,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/material/material.module';
 import { DialogStructureComponent } from './dialog-structure/dialog-structure.component';
 import { RegisterComponent } from './register/register.component';
+import { RegisterConfirmationComponent } from './register-confirmation/register-confirmation.component';
 @NgModule({
   declarations: [
     LoginComponent,
     DialogStructureComponent,
-    RegisterComponent
+    RegisterComponent,
+    RegisterConfirmationComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { RegisterComponent } from './register/register.component';
     LoginComponent
   ],
   entryComponents: [
-    RegisterComponent
+    RegisterComponent,
+    RegisterConfirmationComponent
   ]
 })
 export class SharedModule { }

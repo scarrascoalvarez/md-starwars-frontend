@@ -55,16 +55,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   openRegister(): void {
-    const dialogRef = this.dialog.open(RegisterComponent, {
+    this.dialog.open(RegisterComponent, {
       width: '750px',
     });
-    dialogRef.afterClosed()
-      .pipe(
-        takeUntil(this.destroy$)
-      )
-      .subscribe((response: any) => {
-        console.log('response', response);
-      });
   }
 
 }
