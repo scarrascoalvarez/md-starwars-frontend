@@ -1,6 +1,13 @@
 <app-dialog-structure [dialogRef]="dialogRef">
     <div class="register-wrapper">
         <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <div class="row" *ngIf="registryError">
+                <div class="col">
+                    <div class="error-message">
+                        <p class="m-0">El correo electronico especificado está siendo utilizado por otro usuario. Por favor, introduzca uno distinto.</p>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col text-center">
                     <h4>Crear cuenta</h4>

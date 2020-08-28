@@ -1,32 +1,63 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from 'src/app/core/helpers/custom-validators';
+import { RegisterService } from './register.service';
+import { takeUntil } from 'rxjs/internal/operators/takeUntil';
+import { Subject } from 'rxjs/internal/Subject';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [RegisterService]
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
+
+  /**
+   * Use to destroy and prevent memory leaks
+   */
+  private destroy$: Subject<void> = new Subject<void>();
 
   /**
    * Form with register information
    */
   registerForm: FormGroup;
 
+  /** 
+   * Indicates if an error has occurred in the user registration
+   */
+  registryError: boolean = false;
+
   constructor(
     public dialogRef: MatDialogRef<any>,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private registerService: RegisterService,
+    private changeDetectorRef: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
     this.buildRegisterForm();
   }
 
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
   register(): void {
     if (this.registerForm.valid) {
-      console.log('login');
+      this.registerService.registerUser(this.registerForm.value).pipe(
+        takeUntil(this.destroy$)
+      ).subscribe((response: boolean) => {
+        if (response) {
+          console.log('registrado');
+        } else {
+          this.registryError = true;
+          this.changeDetectorRef.markForCheck();
+        }
+      });
     }
   }
 
@@ -36,7 +67,7 @@ export class RegisterComponent implements OnInit {
       lastname: [null, Validators.required],
       name: [null, Validators.required],
       role: ['Administrator', Validators.required],
-      password: [null, [Validators.required, CustomValidators.minMaxLength({min: 8, max: 12})]]
+      password: [null, [Validators.required, CustomValidators.minMaxLength({ min: 8, max: 12 })]]
     });;
   }
 
