@@ -9,7 +9,7 @@ export class MainLayoutService {
   /**
    * Indicates if the sidebar is visible
    */
-  showSidebar: BehaviorSubject<string> = new BehaviorSubject<string>('in');
+  showSidebar: BehaviorSubject<string> = new BehaviorSubject<string>('out');
   showSidebar$ = this.showSidebar.asObservable();
 
   /**

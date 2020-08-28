@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$)
       ).subscribe((user: User) => {
         if (user) {
+          this.loginError = false;
           this.authenticationService.setApplicationUser(user);
           this.mainLayoutService.showHideSidebar();
           this.loginForm.reset();

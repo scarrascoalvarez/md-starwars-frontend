@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {MainLayoutComponent} from 'src/app/layout/main-layout/main-layout.component'
+import {AuthenticationGuard} from 'src/app/core/guards/authentication/authentication.guard';
+import {AdminGuard} from 'src/app/core/guards/admin/admin.guard';
 
 const routes: Routes = [
   {
@@ -23,10 +25,12 @@ const routes: Routes = [
       {
         path: 'information',
         loadChildren: () => import('./views/information/information.module').then(m => m.InformationModule),
+        canActivate: [AuthenticationGuard]
       },
       {
         path: 'admin',
         loadChildren: () => import('./views/admin/admin.module').then(m => m.AdminModule),
+        canActivate: [AuthenticationGuard, AdminGuard]
       }
     ]
   },

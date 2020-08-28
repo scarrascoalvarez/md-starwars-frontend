@@ -12,22 +12,24 @@ export class AuthenticationService {
    */
   user: User;
 
-  /**
-   * Informs if the user is logged into the application
-   */
-  private isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  public isAuthenticated$ = this.isAuthenticated.asObservable();
+  isAuthenticated: boolean = false;
 
   /**
    * Reports if the user is an administrator
    */
-  private isAdmin: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  public isAdmin$ = this.isAdmin.asObservable();
+  isAdmin: boolean = false;
 
   constructor() { }
 
   setApplicationUser(user: User): void {
-    console.log('user', user);
-    
+    this.user = user;
+    this.isAuthenticated = true;
+    this.user.role === 'Administrator' ? this.isAdmin = true : this.isAdmin = false;
+  }
+
+  logoutUser(): void {
+    this.user = null;
+    this.isAuthenticated = false;
+    this.isAdmin = false;
   }
 }
