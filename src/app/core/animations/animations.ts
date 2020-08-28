@@ -52,5 +52,21 @@ export const animations = [
             }))
         ]
         )])
+    ]),
+    trigger('listAnimation', [
+        transition('* <=> *', [
+            query(':enter',
+                [style({
+                    opacity: 0, transform: 'translateY(-30px)'
+                }), stagger('250ms', animate('250ms ease-out', style({ opacity: 1, transform: 'translateY(0)' })))],
+                { optional: true }
+            ),
+            query(':leave',
+                animate('250ms', style({
+                    opacity: 0,
+                })),
+                { optional: true }
+            )
+        ])
     ])
 ];
