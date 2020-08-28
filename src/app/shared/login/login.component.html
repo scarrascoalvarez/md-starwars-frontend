@@ -1,4 +1,16 @@
 <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="row" *ngIf="loginError">
+        <div class="col-12">
+            <div class="error-message error-message--blue">
+                <p class="m-0">Le recordamos que si necesita ayuda, el equipo de Atención al Cliente está a su disposición llamando al teléfono 900 456 000 o bien al email contact@massimodutti.com</p>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="error-message error-message--green">
+                <p class="m-0">La combinación de usuario y contraseña no es correcta.</p>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col text-center">
             <h4>Iniciar Sesión</h4>
