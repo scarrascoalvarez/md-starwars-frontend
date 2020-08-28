@@ -10,7 +10,7 @@ import { Starship } from 'src/app/core/models/startship.model';
 export class StarshipCardComponent implements OnInit {
 
   @Input() starship: Starship;
-
+  
   constructor() { }
 
   ngOnInit(): void {

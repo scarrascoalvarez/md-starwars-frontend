@@ -55,11 +55,10 @@ export class StarshipsListService implements OnDestroy {
         takeUntil(this.destroy$)
       ).subscribe((starships: PaginatedStarships) => {
         starships.results.forEach((starship: Starship) => {
-          starship.image = `${environment.API_IMAGE_URL}${starship.url.split('/')[starship.url.split('/').length - 2]}.jpg`
+          starship.id = `${(starship.url.split('/')[starship.url.split('/').length - 2])}`;
+          starship.image = `${environment.API_IMAGE_URL}${starship.id}.jpg`
         });
-        this.starships.next(starships.results);
-        console.log(starships.results);
-        
+        this.starships.next(starships.results);        
       })
   }
 

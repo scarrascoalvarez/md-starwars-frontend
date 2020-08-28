@@ -6,6 +6,7 @@ export interface PaginatedStarships {
 }
 
 export interface Starship {
+    id: any;
     name: string;
     image: string;
     model: string;
