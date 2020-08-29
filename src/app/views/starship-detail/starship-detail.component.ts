@@ -31,6 +31,7 @@ export class StarshipDetailComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.scrollToTop();
     this.activatedRoute.params.pipe(
       takeUntil(this.destroy$)
     ).subscribe((params: Params) => {
@@ -59,6 +60,10 @@ export class StarshipDetailComponent implements OnInit, OnDestroy {
 
   showNotFoundImage(cardImage: any): void {
     cardImage.style.backgroundImage = 'url(assets/images/not-found.png)';
+  }
+
+  private scrollToTop() {
+    window.scroll(0, 0);
   }
 
 }

@@ -22,6 +22,7 @@ export class StarshipsListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.scrollToTop();
     this.starshipsListService.getInitialStarships();
   }
 
@@ -30,11 +31,12 @@ export class StarshipsListComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-
   onScroll() {    
     this.starshipsListService.getMoreStarships();    
   }
 
-
+  private scrollToTop() {
+    window.scroll(0, 0);
+  }
 
 }
