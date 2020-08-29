@@ -47,6 +47,7 @@
 }
 
 .logo {
+    cursor: pointer;
     height: 45px;
     width: 200px;
     background-image: url("/assets/logos/logo.png");
@@ -58,6 +59,7 @@
     }
 }
 .logo-mini {
+    cursor: pointer;
     height: 35px;
     width: 70px;
     background-image: url("/assets/logos/logo_mini.png");
@@ -66,7 +68,7 @@
     background-position: center;
     @media (min-width: $screen-md) {
         display: none;
-    }  
+    }
 }
 
 .nav-option {
@@ -79,6 +81,10 @@
     transition: 0.2s all;
     color: $black;
     cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     @media (max-width: $screen-md) {
         display: none;
     }

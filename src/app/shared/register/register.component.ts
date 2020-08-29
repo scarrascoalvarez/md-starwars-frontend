@@ -5,7 +5,7 @@ import { CustomValidators } from 'src/app/core/helpers/custom-validators';
 import { RegisterService } from './register.service';
 import { takeUntil } from 'rxjs/internal/operators/takeUntil';
 import { Subject } from 'rxjs/internal/Subject';
-import { RegisterConfirmationComponent } from '../register-confirmation/register-confirmation.component';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-register',
@@ -55,8 +55,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
       ).subscribe((response: boolean) => {
         if (response) {
           this.dialogRef.close();
-          this.dialog.open(RegisterConfirmationComponent, {
+          this.dialog.open(ConfirmationDialogComponent, {
             width: '750px',
+            data: {
+              title: 'Gracias por registrarte',
+              description: 'Hemos guardado su email correctamente, ya puede iniciar sesión'
+            }
           });
         } else {
           this.registryError = true;

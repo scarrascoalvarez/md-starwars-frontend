@@ -5,7 +5,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/material/material.module';
 import { DialogStructureComponent } from './dialog-structure/dialog-structure.component';
 import { RegisterComponent } from './register/register.component';
-import { RegisterConfirmationComponent } from './register-confirmation/register-confirmation.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
@@ -14,7 +14,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     LoginComponent,
     DialogStructureComponent,
     RegisterComponent,
-    RegisterConfirmationComponent,
+    ConfirmationDialogComponent,
     SpinnerComponent
   ],
   imports: [
@@ -31,7 +31,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
   ],
   entryComponents: [
     RegisterComponent,
-    RegisterConfirmationComponent
+    ConfirmationDialogComponent
   ]
 })
 export class SharedModule { }
