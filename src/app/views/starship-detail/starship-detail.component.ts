@@ -37,8 +37,13 @@ export class StarshipDetailComponent implements OnInit, OnDestroy {
       this.starshipDetailService.getStarshipInfo(params.id).pipe(
         takeUntil(this.destroy$)
       ).subscribe((starship: Starship) => {
-        this.starship = starship;
-        this.changeDetectorRef.markForCheck();
+        this.starshipDetailService.getRelatedMovies(starship).pipe(
+          takeUntil(this.destroy$)
+        ).subscribe((starShipWithFilms: Starship) => {
+          console.log('starship', starShipWithFilms);
+          this.starship = starShipWithFilms;
+          this.changeDetectorRef.markForCheck();
+        })
       });
     })
   }

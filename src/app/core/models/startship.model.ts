@@ -22,7 +22,26 @@ export interface Starship {
     MGLT: string;
     starship_class: string;
     pilots: string[];
-    films: string[];
+    films: any[] | Film[];
+    created: Date;
+    edited: Date;
+    url: string;
+}
+
+export interface Film {
+    id: any;
+    image: string;
+    title: string;
+    episode_id: number;
+    opening_crawl: string;
+    director: string;
+    producer: string;
+    release_date: Date;
+    characters: string[];
+    planets: string[];
+    starships: string[];
+    vehicles: string[];
+    species: string[];
     created: Date;
     edited: Date;
     url: string;

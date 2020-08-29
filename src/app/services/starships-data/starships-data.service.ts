@@ -68,4 +68,29 @@ export class StarshipsDataService {
     const url = `${environment.API_STARWARS_URL}/starships/${id}/`;
     return this.httpClient.get<PaginatedStarships>(url);
   }
+
+  /**
+   * Returns an observable with the movie information and removes the observable from the cache after the stipulated cache expiration time.
+   * @param id starship identifier
+   */
+  getFilm(id: number): Observable<Starship> {
+    if (!this.starship$[`film=${id}`]) {
+      this.starship$[`film=${id}`] = this.requestFilms(id).pipe(
+        shareReplay(environment.CACHE_SIZE)
+      );
+      setTimeout(() => {
+        this.starship$[`film=${id}`] = null;
+      }, environment.CACHE_EXPIRATION_TIME);
+    }
+    return this.starship$[`film=${id}`];
+  }
+
+  /**
+   * Make the request to obtain movie detail from the api
+   * @param id starship identifier
+   */
+  requestFilms(id: number): Observable<PaginatedStarships> {
+    const url = `${environment.API_STARWARS_URL}/films/${id}/`;
+    return this.httpClient.get<PaginatedStarships>(url);
+  }
 }

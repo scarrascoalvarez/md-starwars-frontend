@@ -56,7 +56,7 @@ export class StarshipsListService implements OnDestroy {
       ).subscribe((starships: PaginatedStarships) => {
         starships.results.forEach((starship: Starship) => {
           starship.id = `${(starship.url.split('/')[starship.url.split('/').length - 2])}`;
-          starship.image = `${environment.API_IMAGE_URL}${starship.id}.jpg`
+          starship.image = `${environment.API_IMAGE_URL}starships/${starship.id}.jpg`
         });
         this.starships.next(starships.results);        
       })
@@ -74,15 +74,13 @@ export class StarshipsListService implements OnDestroy {
         ).subscribe((starships: PaginatedStarships) => {
           starships.results.forEach((starship: Starship) => {
             starship.id = `${(starship.url.split('/')[starship.url.split('/').length - 2])}`;
-            starship.image = `${environment.API_IMAGE_URL}${starship.id}.jpg`
+            starship.image = `${environment.API_IMAGE_URL}starships/${starship.id}.jpg`
           });
           const totalStarships = [...this.starships.getValue(), ...starships.results];
           this.starships.next(totalStarships);
           if (starships.count === this.starships.getValue().length) {
             this.listCompleted = true;
-          }
-          console.log(totalStarships);
-          
+          }          
           this.isLoading.next(false);
         })
     }
