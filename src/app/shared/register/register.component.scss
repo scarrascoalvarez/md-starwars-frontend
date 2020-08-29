@@ -1,5 +1,8 @@
 @import "./../../../styles/colors.scss";
+@import "./../../../styles/variables.scss";
 
 .register-wrapper {
-    padding: 0 135px 40px 135px;
+    @media (min-width: $screen-md) {
+        padding: 0 135px 40px 135px;
+    }
 }
