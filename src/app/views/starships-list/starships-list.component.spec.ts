@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { StarshipsListComponent } from './starships-list.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('StarshipsListComponent', () => {
   let component: StarshipsListComponent;
@@ -8,6 +10,10 @@ describe('StarshipsListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule,
+        NoopAnimationsModule
+      ],
       declarations: [ StarshipsListComponent ]
     })
     .compileComponents();

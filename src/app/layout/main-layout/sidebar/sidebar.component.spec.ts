@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SidebarComponent } from './sidebar.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('SidebarComponent', () => {
   let component: SidebarComponent;
@@ -8,6 +9,9 @@ describe('SidebarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        NoopAnimationsModule
+      ],
       declarations: [ SidebarComponent ]
     })
     .compileComponents();
