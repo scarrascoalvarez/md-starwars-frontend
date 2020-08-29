@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MainLayoutService } from '../main-layout.service';
+import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-top-nav-bar',
@@ -9,7 +10,8 @@ import { MainLayoutService } from '../main-layout.service';
 export class TopNavBarComponent implements OnInit {
 
   constructor(
-    public mainLayoutService: MainLayoutService
+    public mainLayoutService: MainLayoutService,
+    public authenticationService: AuthenticationService
   ) { }
 
   ngOnInit(): void {

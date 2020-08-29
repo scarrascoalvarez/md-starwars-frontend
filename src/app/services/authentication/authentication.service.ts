@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { User } from 'src/app/core/models/user.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,12 @@ export class AuthenticationService {
   /**
    * User logged into the application
    */
-  user: User;
+  private user: BehaviorSubject<User> = new BehaviorSubject(null);
+  public user$ = this.user.asObservable();
 
+  /**
+   * Reports if the user is an autheticated
+   */
   isAuthenticated: boolean = false;
 
   /**
@@ -19,17 +24,20 @@ export class AuthenticationService {
    */
   isAdmin: boolean = false;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   setApplicationUser(user: User): void {
-    this.user = user;
+    this.user.next(user);
     this.isAuthenticated = true;
-    this.user.role === 'Administrator' ? this.isAdmin = true : this.isAdmin = false;
+    user.role === 'Administrator' ? this.isAdmin = true : this.isAdmin = false;
   }
 
-  logoutUser(): void {
-    this.user = null;
+  logout(): void {
+    this.user.next(null);
     this.isAuthenticated = false;
     this.isAdmin = false;
+    this.router.navigate(['']);
   }
 }

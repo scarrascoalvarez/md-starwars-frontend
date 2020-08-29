@@ -15,8 +15,11 @@
         <div class="nav-option mr-4" [routerLink]="['/admin']" routerLinkActive="nav-option--active">
             Administración
         </div>
-        <div class="nav-option" (click)="mainLayoutService.showHideSidebar()">
+        <div *ngIf="!(authenticationService.user$ | async)" class="nav-option" (click)="mainLayoutService.showHideSidebar()">
             Iniciar sesión
+        </div>
+        <div *ngIf="(authenticationService.user$ | async)" class="nav-option" (click)="authenticationService.logout()">
+            Cerrar sesión
         </div>
     </div>
 </div>
