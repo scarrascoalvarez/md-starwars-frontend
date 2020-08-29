@@ -95,3 +95,22 @@
 .nav-option--active {
     border-bottom-color: $black;
 }
+
+.icon {
+    cursor: pointer;
+    height: 18px;
+    width: 18px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    margin: 0 10px;
+    @media (min-width: $screen-md) {
+        display: none;
+    }
+    &--user {
+        background-image: url("/assets/icons/user.png");
+    }
+    &--menu {
+        background-image: url("/assets/icons/menu.png");
+    }
+}
