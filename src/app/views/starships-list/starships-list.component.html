@@ -10,7 +10,7 @@
 <div class="container-fluid">
     <div class="row"  [@listAnimation]="(starshipsListService.starship$ | async)?.length" infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
         <div class="col-md-6" *ngFor="let starship of starshipsListService.starship$ | async">
-            <app-starship-card [starship]="starship"></app-starship-card>
+            <app-starship-card [routerLink]="['/starship', 'detail', starship.id]" routerLinkActive="router-link-active"  [starship]="starship"></app-starship-card>
         </div>
     </div>
 </div>
