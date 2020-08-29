@@ -5,6 +5,10 @@
 /tmp
 /out-tsc
 dist
+
+# firebase
+.firebase
+
 # Only exists if Bazel was run
 /bazel-out
 
