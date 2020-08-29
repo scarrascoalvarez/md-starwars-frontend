@@ -1,8 +1,9 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subject } from 'rxjs/internal/Subject';
 import { takeUntil } from 'rxjs/operators';
 import { StarshipDetailService } from './starship-detail.service';
+import { Starship } from 'src/app/core/models/startship.model';
 
 @Component({
   selector: 'app-starship-detail',
@@ -18,22 +19,37 @@ export class StarshipDetailComponent implements OnInit, OnDestroy {
    */
   private destroy$: Subject<void> = new Subject<void>();
 
+  /**
+   * Contains the information of the starship
+   */
+  starship: Starship;
+
   constructor(
     private activatedRoute: ActivatedRoute,
-    public starshipDetailService: StarshipDetailService
+    public starshipDetailService: StarshipDetailService,
+    private changeDetectorRef: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.pipe(
       takeUntil(this.destroy$)
     ).subscribe((params: Params) => {
-      this.starshipDetailService.getStarshipInfo(params.id);
+      this.starshipDetailService.getStarshipInfo(params.id).pipe(
+        takeUntil(this.destroy$)
+      ).subscribe((starship: Starship) => {
+        this.starship = starship;
+        this.changeDetectorRef.markForCheck();
+      });
     })
   }
 
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  showNotFoundImage(cardImage: any): void {
+    cardImage.style.backgroundImage = 'url(assets/images/not-found.png)';
   }
 
 }

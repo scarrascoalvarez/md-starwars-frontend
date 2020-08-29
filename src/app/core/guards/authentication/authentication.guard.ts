@@ -25,7 +25,7 @@ export class AuthenticationGuard implements CanActivate {
         width: '750px',
         data: {
           title: 'Solo usuarios registrados',
-          description: 'Inicia sesión para poder ver esta página'
+          description: 'Inicia sesión para poder ver esta página.'
         }
       });
       return false;

@@ -25,7 +25,7 @@ export class AdminGuard implements CanActivate {
         width: '750px',
         data: {
           title: 'Solo usuarios administradores',
-          description: 'Inicia sesión con un usuario administrador para poder ver esta página'
+          description: 'Inicia sesión con un usuario administrador para poder ver esta página.'
         }
       });
       return false;

@@ -1,1 +1,38 @@
-<p>starship-detail works!</p>
+<div class="container-fluid" *ngIf="starship">
+    <div class="row">
+        <div class="col mt-4 mb-4">
+            <p [routerLink]="['/starships']" class="m-0 action">VOLVER</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div #starshipImage class="starship-image" [ngStyle]="{'background-image':  'url(' + starship.image + ')'}"></div>
+            <img style="display: none;" [src]="starship.image" (error)="showNotFoundImage(starshipImage)" />
+        </div>
+        <div class="col-md-6">
+            <div class="row pr-4 pl-4">
+                <div class="col-12 mb-2 text-center">
+                    <h4>{{starship.name}}</h4>
+                </div>
+                <div class="col-12">
+                    <p>Modelo: {{starship.model}}</p>
+                    <p>Fabricante: {{starship.manufacturer}}</p>
+                    <p>Clase: {{starship.starship_class}}</p>
+                    <p>Coste: {{starship.cost_in_credits | number}} créditos galácticos</p>
+                    <p>Velocidad: {{starship.max_atmosphering_speed | number}} km/h</p>
+                    <p>Hyperdrive Rating: {{starship.hyperdrive_rating}}</p>
+                    <p>MGLT: {{starship.MGTL}}</p>
+                    <p>Longitud: {{starship.length}}</p>
+                    <p>Capacidad: {{starship.cargo_capacity | number }} metric tons</p>
+                    <p>Tripulación mínima: {{starship.crew}}</p>
+                    <p>Pasajeros: {{starship.passengers}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            PILOTOS
+        </div>
+    </div>
+</div>

@@ -65,7 +65,7 @@ export class StarshipsDataService {
    * @param id starship identifier
    */
   requestStarship(id: number): Observable<PaginatedStarships> {
-    const url = `${environment.API_STARWARS_URL}/starships/${id}`;
+    const url = `${environment.API_STARWARS_URL}/starships/${id}/`;
     return this.httpClient.get<PaginatedStarships>(url);
   }
 }
