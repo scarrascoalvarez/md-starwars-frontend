@@ -2,6 +2,7 @@
 @import "./../../../../styles/variables.scss";
 
 .sidebar {
+    overflow-y: scroll;
     padding: 20px;
     z-index: 10;
     width: 425px;
