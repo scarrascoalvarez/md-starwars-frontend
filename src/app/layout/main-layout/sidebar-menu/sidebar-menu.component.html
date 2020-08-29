@@ -1,0 +1,17 @@
+<div class="sidebar-menu" [@slideInOutSidebarMenu]="mainLayoutService.showSidebarMenu$ | async">
+    <div class="sidebar-menu__actions">
+        <div (click)="mainLayoutService.showHideSidebarMenu()" class="sidebar-menu__actions__cancel"></div>
+    </div>
+    <div class="sidebar-menu__content">
+        <div class="row">
+            <div class="col">
+                <div class="nav-option" (click)="mainLayoutService.showHideSidebarMenu()" [routerLink]="['starships']">
+                    Naves</div>
+                <div class="nav-option" (click)="mainLayoutService.showHideSidebarMenu()"
+                    [routerLink]="['information']">Información</div>
+                <div class="nav-option" (click)="mainLayoutService.showHideSidebarMenu()" [routerLink]="['admin']">
+                    Administración</div>
+            </div>
+        </div>
+    </div>
+</div>

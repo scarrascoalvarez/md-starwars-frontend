@@ -6,9 +6,10 @@ import { TopNavBarComponent } from './main-layout/top-nav-bar/top-nav-bar.compon
 import { SidebarComponent } from './main-layout/sidebar/sidebar.component';
 import {SharedModule} from 'src/app/shared/shared.module';
 import { BasicLayoutComponent } from './basic-layout/basic-layout.component';
+import { SidebarMenuComponent } from './main-layout/sidebar-menu/sidebar-menu.component';
 
 @NgModule({
-  declarations: [MainLayoutComponent, TopNavBarComponent, SidebarComponent, BasicLayoutComponent],
+  declarations: [MainLayoutComponent, TopNavBarComponent, SidebarComponent, BasicLayoutComponent, SidebarMenuComponent],
   imports: [
     CommonModule,
     RouterModule,

@@ -1,0 +1,51 @@
+@import "./../../../../styles/colors.scss";
+@import "./../../../../styles/variables.scss";
+
+.sidebar-menu {
+    padding: 20px;
+    z-index: 10;
+    width: 100vw;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0px;
+    background-color: $white;
+    @include border-shadow();
+    &__actions {
+        display: flex;
+        justify-content: flex-end;
+        &__cancel {
+            cursor: pointer;
+            height: 40px;
+            width: 40px;
+            background-image: url("/assets/icons/cancel.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+        }
+    }
+    &__content {
+        padding: 20px;
+    }
+}
+
+.nav-option {
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: normal;
+    padding-bottom: 5px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: transparent;
+    transition: 0.2s all;
+    color: $black;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.nav-option:hover {
+    opacity: 0.4;
+}

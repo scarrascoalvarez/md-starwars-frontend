@@ -12,8 +12,9 @@
         <div [routerLink]="['/']" class="logo"></div>
     </div>
     <div class="top-nav-bar__right">
-        <div class="icon icon--user"></div>
-        <div class="icon icon--menu"></div>
+        <div class="icon icon--user" *ngIf="!(authenticationService.user$ | async)" (click)="mainLayoutService.showHideSidebar()"></div>
+        <div class="icon icon--logout" *ngIf="(authenticationService.user$ | async)" (click)="authenticationService.logout()"></div>
+        <div class="icon icon--menu" (click)="mainLayoutService.showHideSidebarMenu()"></div>
         <div class="nav-option mr-4" [routerLink]="['/admin']" routerLinkActive="nav-option--active">
             Administración
         </div>

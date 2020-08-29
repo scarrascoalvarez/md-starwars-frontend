@@ -53,6 +53,26 @@ export const animations = [
         ]
         )])
     ]),
+    trigger('slideInOutSidebarMenu', [
+        state('in', style({
+            'right': '0px'
+        })),
+        state('out', style({
+            'right': '-100vw'
+        })),
+        transition('in => out', [group([
+            animate('300ms ease-in-out', style({
+                'right': '-100vw'
+            }))
+        ]
+        )]),
+        transition('out => in', [group([
+            animate('300ms ease-in-out', style({
+                'right': '0px'
+            }))
+        ]
+        )])
+    ]),
     trigger('listAnimation', [
         transition('* <=> *', [
             query(':enter',
