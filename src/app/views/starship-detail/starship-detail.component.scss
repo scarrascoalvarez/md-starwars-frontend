@@ -17,3 +17,32 @@
     cursor: pointer;
     font-weight: bold;
 }
+
+.movies-container {
+    background-color: $grayBackground;
+    margin-top: 40px;
+}
+
+.movie-card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 20px 20px 20px;
+    transition: 0.2s all;
+    cursor: pointer;
+    &__image {
+        height: 250px;
+        width: 200px;
+        background-color: $white;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+    &__title {
+        margin-top: 20px;
+        text-align: center;
+    }
+    :hover {
+        opacity: 0.8;
+    }
+}
