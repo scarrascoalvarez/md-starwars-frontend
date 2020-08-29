@@ -5,6 +5,9 @@
     padding: 20px;
     z-index: 10;
     width: 425px;
+    @media (max-width: $screen-sm) {
+        width: 320px;
+    }
     height: 100%;
     position: fixed;
     top: 0;
