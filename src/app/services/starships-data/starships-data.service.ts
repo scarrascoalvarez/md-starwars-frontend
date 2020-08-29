@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
 import { shareReplay } from 'rxjs/internal/operators/shareReplay';
-import { PaginatedStarships } from 'src/app/core/models/startship.model';
+import { Starship, PaginatedStarships } from 'src/app/core/models/startship.model';
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +48,7 @@ export class StarshipsDataService {
    * Returns an observable with the information of the indicated starship and remove the observable from the cache after the stipulated cache expiration time
    * @param id starship identifier
    */
-  getStarship(id: number): Observable<PaginatedStarships> {
+  getStarship(id: number): Observable<Starship> {
     if (!this.starship$[`id=${id}`]) {
       this.starship$[`id=${id}`] = this.requestStarship(id).pipe(
         shareReplay(environment.CACHE_SIZE)
