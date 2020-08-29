@@ -6,7 +6,7 @@ registerLocaleData(localeEs, 'es');
 import { LayoutModule } from 'src/app/layout/layout.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {SpinnerInterceptorService} from 'src/app/core/interceptors/spinner-interceptor/spinner-interceptor.service';
-
+import {ErrorHandlerService} from 'src/app/core/interceptors/error-handler/error-handler.service';
 @NgModule({
   declarations: [],
   imports: [
@@ -16,6 +16,7 @@ import {SpinnerInterceptorService} from 'src/app/core/interceptors/spinner-inter
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es' },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorHandlerService, multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptorService, multi: true },
   ],
   exports: [
