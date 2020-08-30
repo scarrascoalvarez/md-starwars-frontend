@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { ErrorHandlerService } from './error-handler.service';
 import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs/internal/observable/of';
 
 describe('ErrorHandlerService', () => {
   let service: ErrorHandlerService;
@@ -17,5 +18,11 @@ describe('ErrorHandlerService', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('should intercept call and dont receive error', () => {
+    service.intercept({
+      clone: () => { }, url: 'test', headers: { append: () => 'test' }
+    } as any, { handle: () => of(true) } as any).subscribe(result => { });
   });
 });

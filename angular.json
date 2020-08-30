@@ -93,6 +93,11 @@
               "src/favicon.ico",
               "src/assets"
             ],
+            "codeCoverageExclude": [
+              "src/app/shared/models/**/*",
+              "src/assets/mocks/**/*",
+              "src/app/core/helpers/**/*"
+            ],
             "styles": [
               "src/styles.scss"
             ],

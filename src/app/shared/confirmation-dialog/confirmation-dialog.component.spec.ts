@@ -34,4 +34,8 @@ describe('ConfirmationDialogComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should close dialog', () => {
+    component.close();
+  });
 });

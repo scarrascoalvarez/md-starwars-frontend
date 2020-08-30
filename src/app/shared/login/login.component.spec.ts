@@ -43,4 +43,20 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should login form invalid', () => {
+    expect(component.login()).toBe();
+  });
+
+  it('should login form valid', () => {
+    component.loginForm.setValue({
+      email: 'test@test.com',
+      password: '12345678'
+    });
+    expect(component.login()).toBe();
+  });
+
+  it('should openRegister', () => {
+    expect(component.openRegister()).toBe();
+  })
 });

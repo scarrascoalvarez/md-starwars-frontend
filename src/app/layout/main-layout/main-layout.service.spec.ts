@@ -13,4 +13,27 @@ describe('MainLayoutService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should showHideSidebar in', () => {
+    service.showSidebar.next('in');
+    service.showOverlay.next(true);
+    expect(service.showHideSidebar()).toBe();
+  });
+
+  it('should showHideSidebar out', () => {
+    service.showSidebar.next('out');
+    service.showOverlay.next(false);
+    expect(service.showHideSidebar()).toBe();
+  });
+
+  it('should showHideSidebarMenu in', () => {
+    service.showSidebarMenu.next('in');
+    expect(service.showHideSidebarMenu()).toBe();
+  });
+
+  it('should showHideSidebarMenu out', () => {
+    service.showSidebarMenu.next('out');
+    expect(service.showHideSidebarMenu()).toBe();
+  });
+
 });

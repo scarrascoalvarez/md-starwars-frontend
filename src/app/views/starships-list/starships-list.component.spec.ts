@@ -36,4 +36,8 @@ describe('StarshipsListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should onScroll', () => {
+    expect(component.onScroll()).toBe();
+  });
 });

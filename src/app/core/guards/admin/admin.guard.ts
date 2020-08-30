@@ -15,7 +15,7 @@ export class AdminGuard implements CanActivate, OnDestroy {
   /**
    * Use to destroy and prevent memory leaks
    */
-  private destroy$: Subject<void> = new Subject<void>();
+  destroy$: Subject<void> = new Subject<void>();
 
   constructor(
     private authenticationService: AuthenticationService,

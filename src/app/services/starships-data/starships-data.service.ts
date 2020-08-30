@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs/internal/Observable';
 import { shareReplay } from 'rxjs/internal/operators/shareReplay';
-import { Starship, PaginatedStarships } from 'src/app/core/models/startship.model';
+import { Starship, PaginatedStarships, Film } from 'src/app/core/models/startship.model';
 
 @Injectable({
   providedIn: 'root'
@@ -64,16 +64,16 @@ export class StarshipsDataService {
    * Make the request to obtain starship detail from the api
    * @param id starship identifier
    */
-  requestStarship(id: number): Observable<PaginatedStarships> {
+  requestStarship(id: number): Observable<Starship> {
     const url = `${environment.API_STARWARS_URL}/starships/${id}/`;
-    return this.httpClient.get<PaginatedStarships>(url);
+    return this.httpClient.get<Starship>(url);
   }
 
   /**
    * Returns an observable with the movie information and removes the observable from the cache after the stipulated cache expiration time.
    * @param id starship identifier
    */
-  getFilm(id: number): Observable<Starship> {
+  getFilm(id: number): Observable<Film> {
     if (!this.starship$[`film=${id}`]) {
       this.starship$[`film=${id}`] = this.requestFilms(id).pipe(
         shareReplay(environment.CACHE_SIZE)
@@ -89,8 +89,8 @@ export class StarshipsDataService {
    * Make the request to obtain movie detail from the api
    * @param id starship identifier
    */
-  requestFilms(id: number): Observable<PaginatedStarships> {
+  requestFilms(id: number): Observable<Film> {
     const url = `${environment.API_STARWARS_URL}/films/${id}/`;
-    return this.httpClient.get<PaginatedStarships>(url);
+    return this.httpClient.get<Film>(url);
   }
 }

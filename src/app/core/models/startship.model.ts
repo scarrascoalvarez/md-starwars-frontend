@@ -36,13 +36,13 @@ export interface Film {
     opening_crawl: string;
     director: string;
     producer: string;
-    release_date: Date;
+    release_date: Date | string;
     characters: string[];
     planets: string[];
     starships: string[];
     vehicles: string[];
     species: string[];
-    created: Date;
-    edited: Date;
+    created: Date | string;
+    edited: Date | string;
     url: string;
 }

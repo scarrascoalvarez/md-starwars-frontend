@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 
 import { AdminGuard } from './admin.guard';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -7,6 +7,7 @@ import { MainLayoutService } from 'src/app/layout/main-layout/main-layout.servic
 import { MainLayoutServiceMock } from 'src/assets/mocks/main-layout/main-layout.mock.service';
 import { AuthenticationService } from 'src/app/services/authentication/authentication.service';
 import { AuthenticationServiceMock } from 'src/assets/mocks/authentication/authentication.mock.service';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AdminGuard', () => {
   let guard: AdminGuard;
@@ -15,7 +16,8 @@ describe('AdminGuard', () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        MaterialModule
+        MaterialModule,
+        NoopAnimationsModule
       ],
       providers: [
         { provide: MainLayoutService, useClass: MainLayoutServiceMock },
@@ -28,4 +30,15 @@ describe('AdminGuard', () => {
   it('should be created', () => {
     expect(guard).toBeTruthy();
   });
+
+  it('should call onDestroy', () => {
+    const spyDestroy = spyOn(guard.destroy$, 'next');
+    guard.ngOnDestroy();
+    expect(spyDestroy).toHaveBeenCalled();
+  });
+
+  it('should call canActivate', () => {
+    expect(guard.canActivate()).toEqual(false);
+  });
+
 });

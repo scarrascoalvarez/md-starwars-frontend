@@ -49,4 +49,21 @@ describe('RegisterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should register invalid form', () => {
+    expect(component.register()).toBe();
+
+  });
+
+  it('should register valid form', () => {
+    component.registerForm.setValue({
+      email: 'test@test.com',
+      lastname: 'lastname',
+      name: 'name',
+      role: 'Administrator',
+      password: '12345678'
+    });
+    expect(component.register()).toBe();
+  });
+
 });
