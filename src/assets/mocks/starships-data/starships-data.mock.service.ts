@@ -1,6 +1,7 @@
 import { of, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { STARSHIPS, STARSHIP, FILM } from './starships-data.mock';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class StarshipsDataServiceMock {

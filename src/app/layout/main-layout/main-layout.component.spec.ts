@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MainLayoutComponent } from './main-layout.component';
+import { MainLayoutService } from './main-layout.service';
+import {MainLayoutServiceMock} from 'src/assets/mocks/main-layout/main-layout.mock.service';
 
 describe('MainLayoutComponent', () => {
   let component: MainLayoutComponent;
@@ -8,7 +10,10 @@ describe('MainLayoutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainLayoutComponent ]
+      declarations: [ MainLayoutComponent ],
+      providers: [
+        { provide: MainLayoutService, useClass: MainLayoutServiceMock },
+      ]
     })
     .compileComponents();
   }));

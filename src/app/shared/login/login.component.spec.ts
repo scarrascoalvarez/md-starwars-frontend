@@ -6,6 +6,10 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MaterialModule } from 'src/app/material/material.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginService } from './login.service';
+import { UserDataService } from 'src/app/services/user-data/user-data.service';
+import { UserDataServiceMock } from 'src/assets/mocks/user-data/user-data.mock.service';
+import { LoginServiceMock } from 'src/assets/mocks/login/login.service.mock';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -21,9 +25,13 @@ describe('LoginComponent', () => {
         RouterTestingModule,
         NoopAnimationsModule
       ],
-      declarations: [ LoginComponent ]
+      declarations: [LoginComponent],
+      providers: [
+        { provide: UserDataService, useClass: UserDataServiceMock },
+        { provide: LoginService, useClass: LoginServiceMock },
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

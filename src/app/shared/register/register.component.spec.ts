@@ -7,6 +7,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { UserDataService } from 'src/app/services/user-data/user-data.service';
+import { UserDataServiceMock } from 'src/assets/mocks/user-data/user-data.mock.service';
+import { RegisterService } from './register.service';
+import { RegisterServiceMock } from 'src/assets/mocks/register/register.service.mock';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -25,13 +29,15 @@ describe('RegisterComponent', () => {
         HttpClientTestingModule,
         NoopAnimationsModule
       ],
-      declarations: [ RegisterComponent ],
+      declarations: [RegisterComponent],
       providers: [
         { provide: MAT_DIALOG_DATA, useValue: { title: 'title', description: 'description' } },
         { provide: MatDialogRef, useValue: dialogMock },
+        { provide: UserDataService, useClass: UserDataServiceMock },
+        { provide: RegisterService, useClass: RegisterServiceMock },
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -6,9 +6,9 @@ export interface PaginatedStarships {
 }
 
 export interface Starship {
-    id: any;
+    id?: any;
+    image?: string;
     name: string;
-    image: string;
     model: string;
     manufacturer: string;
     cost_in_credits: string;
@@ -23,8 +23,8 @@ export interface Starship {
     starship_class: string;
     pilots: string[];
     films: any[] | Film[];
-    created: Date;
-    edited: Date;
+    created: Date | string;
+    edited: Date | string; 
     url: string;
 }
 
