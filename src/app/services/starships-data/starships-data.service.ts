@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs/internal/Observable';
-import { shareReplay } from 'rxjs/internal/operators/shareReplay';
+import { Observable } from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
 import { Starship, PaginatedStarships, Film } from 'src/app/core/models/startship.model';
 
 @Injectable({

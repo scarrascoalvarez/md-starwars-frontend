@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { ErrorHandlerService } from './error-handler.service';
 import { RouterTestingModule } from '@angular/router/testing';
-import { of } from 'rxjs/internal/observable/of';
+import { of } from 'rxjs';
 
 describe('ErrorHandlerService', () => {
   let service: ErrorHandlerService;

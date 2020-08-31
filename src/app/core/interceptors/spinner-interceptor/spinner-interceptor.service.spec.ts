@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { SpinnerInterceptorService } from './spinner-interceptor.service';
-import { of } from 'rxjs/internal/observable/of';
+import { of } from 'rxjs';
 
 describe('SpinnerInterceptorService', () => {
   let service: SpinnerInterceptorService;

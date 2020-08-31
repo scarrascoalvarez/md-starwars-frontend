@@ -1,8 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { Subject } from 'rxjs/internal/Subject';
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { Subject, BehaviorSubject } from 'rxjs';
 import { StarshipsDataService } from 'src/app/services/starships-data/starships-data.service';
-import { takeUntil } from 'rxjs/internal/operators/takeUntil';
+import { takeUntil } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 import { PaginatedStarships, Starship } from 'src/app/core/models/startship.model';
 import { environment } from 'src/environments/environment';
