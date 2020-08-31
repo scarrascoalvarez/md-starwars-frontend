@@ -32,12 +32,14 @@ export class AuthenticationService {
     this.user.next(user);
     this.isAuthenticated = true;
     user.role === 'Administrator' ? this.isAdmin = true : this.isAdmin = false;
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
   logout(): void {
     this.user.next(null);
     this.isAuthenticated = false;
     this.isAdmin = false;
+    localStorage.removeItem('user');
     this.router.navigate(['']);
   }
 }
