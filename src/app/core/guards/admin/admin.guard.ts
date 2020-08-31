@@ -5,7 +5,7 @@ import { AuthenticationService } from 'src/app/services/authentication/authentic
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from 'src/app/shared/confirmation-dialog/confirmation-dialog.component';
 import { MainLayoutService } from 'src/app/layout/main-layout/main-layout.service';
-import { takeUntil } from 'rxjs/internal/operators/takeUntil';
+import { takeUntil } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

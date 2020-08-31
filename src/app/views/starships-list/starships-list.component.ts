@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
-import { Subject } from 'rxjs/internal/Subject';
+import { Subject } from 'rxjs';
 import {StarshipsListService} from './starships-list.service';
 import { animations } from 'src/app/core/animations/animations';
 @Component({

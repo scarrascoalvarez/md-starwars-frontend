@@ -1,9 +1,8 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { Subject } from 'rxjs/internal/Subject';
 import { UserDataService } from 'src/app/services/user-data/user-data.service';
 import { User } from 'src/app/core/models/user.model';
-import { Observable } from 'rxjs/internal/Observable';
-import { takeUntil } from 'rxjs/internal/operators/takeUntil';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

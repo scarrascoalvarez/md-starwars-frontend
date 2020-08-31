@@ -1,12 +1,9 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Starship, Film } from 'src/app/core/models/startship.model';
 import { StarshipsDataService } from 'src/app/services/starships-data/starships-data.service';
-import { Subject } from 'rxjs/internal/Subject';
-import { takeUntil } from 'rxjs/internal/operators/takeUntil';
-import { Observable } from 'rxjs/internal/Observable';
+import { Subject, Observable, forkJoin } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { forkJoin } from 'rxjs/internal/observable/forkJoin';
 
 @Injectable({
   providedIn: 'root'

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
-import { Subject } from 'rxjs/internal/Subject';
+import { Subject } from 'rxjs';
 import { NgxSpinnerService } from 'ngx-spinner';
 import {SpinnerService} from './spinner.service';
 import { debounceTime, tap, takeUntil } from 'rxjs/operators';
